@@ -1,0 +1,40 @@
+# 2018-7-3 10:58:31
+# mysql 数据表建立
+	CREATE TABLE table_test (
+                 # 序号
+                 id int unsigned primary key auto_increment not null,
+                 # 客户端id
+                 client_id varchar(50) not null,
+                 # 请求时间
+                 create_time datetime not null,
+                 # 累计请求次数
+                 request_num int unsigned not null default 0)
+								
+								
+# ------------定时操作--------------------------------
+# 1.查询是否开启事件调度
+	SHOW VARIABLES LIKE 'event_scheduler';
+# 2.开启事件调度
+	# 临时
+	SET GLOBAL event_scheduler = 1;
+	# 永久
+	vim /etc/my.cnf
+	event_scheduler=ON
+# 3.创建定时事件操作（函数del_func）   
+	drop event if exists del_func; 
+	CREATE EVENT del_func
+	ON SCHEDULE
+	every 1 day starts '2018-07-03 12:00:00'   # 定时
+	DO  											 # 操作语句
+	delete from table_test where create_time< DATE_SUB(CURDATE(), INTERVAL 7 DAY);       # 7天前   create_time字段格式必须为datetime形式（'2018-07-03 ...'）
+	# delete from table_test where create_time< DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 30 MINUTE);       # 30分钟前
+	
+# 4.查看定时事件
+	show events;
+# 5.删除事件
+	DROP EVENT  [IF EXISTS] my_event_name;
+# 6.事件开启、关闭
+	# 开启
+	alter event my_test_event on completion preserve enable;
+	# 关闭
+	alter event my_test_event on completion preserve disable;

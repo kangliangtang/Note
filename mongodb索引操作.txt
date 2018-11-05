@@ -1,0 +1,18 @@
+# 2018-10-30 08:37:55
+
+1.创建索引  create_indexes()
+index1 = IndexModel([("hello", pymongo.DESCENDING),("world", pymongo.ASCENDING)], name="hello_world")   # 复合索引; 降序：DESCENDING   升序：ASCENDING
+index2 = IndexModel([("goodbye", pymongo.DESCENDING)])
+db.test.create_indexes([index1, index2])
+>> ["hello_world", "goodbye_-1"]
+
+2.查看索引 index_information()
+db.test.index_information()
+>> ["hello_world", "goodbye_-1"]
+
+3.删除索引 drop_index()
+db.test.drop_index("index_name")
+
+4.索引使用
+db.test.find({"索引字段名"："条件"})
+例：db.test.find({"age": 20})

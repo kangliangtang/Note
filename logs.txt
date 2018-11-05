@@ -1,0 +1,19 @@
+# 2018-6-13 10:00:19
+# log日志 
+
+import logging
+# 基础设置
+logging.basicConfig(level=logging.INFO,   # 等级
+                    filename='./logs/new.logs',   # 日志文件名
+                    filemode='a',                 # ‘w'写入， 'a' 追加模式
+                    format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'  # 输出格式
+                    )
+					
+
+
+# 日志等级
+logging.debug('This is debug message') # 打印全部日志
+logging.info('This is info message') # 打印 info 级别以上的日志
+logging.warning('This is warning message') # 打印 warning 级别以上的日志
+logging.error('This is error message') # 打印error 级别以上的日志
+logging.error('This is critical message') # 

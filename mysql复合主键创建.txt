@@ -1,0 +1,6 @@
+create table iot_gw_public(
+            gw_id	varchar(100)	not null,
+            gw_mac	varchar(100)	not null,
+            );
+
+alter table iot_gw_public add primary key(gw_id,gw_mac);

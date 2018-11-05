@@ -1,0 +1,5 @@
+# 2018-7-6 09:47:16
+
+D:\apache-apollo-1.7.1\bin\mybroker\bin
+
+apollo-broker.cmd  run

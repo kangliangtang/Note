@@ -1,0 +1,6 @@
+C:\Windows\System32\drivers\etc
+
+
+172.18.0.44 kylin.beacon.com kylin
+172.18.0.25 hbase1.beacon.com hbase1
+172.18.0.47 hbase2.beacon.com hbase2

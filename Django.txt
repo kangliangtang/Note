@@ -1,0 +1,50 @@
+# 2018-7-23 08:40:56
+
+Problem:
+   1. mysqlclient无法安装在py3 ？
+   2. 数据表迁移？？
+   
+
+1.创建项目
+	Ctrl + R 打开终端
+	django-admin  startproject  TestProject
+2.创建APP
+    django-admin  startapp  TestApp
+	
+3.模板(template)：
+	{{ key }}
+	标签：
+	if 标签：
+			{% if 条件 %}
+				...
+			{% endif %}
+	for 标签： 
+			{% for %}
+			{% endfor %}
+	ifequal:
+			{% ifqequal 值1 值2 %}
+			{% endifqequal %}
+			
+	注释：
+			{# 注释内容 #}
+	过滤器：
+			{{ name|lower }}
+			{{ name|first|upper }}  # 多重过滤
+			
+			
+4.数据库迁移
+	a.将model类转化为迁移文件:
+		python  manage.py  makemigrations  app_name        # 可以不加app_name,视为全局迁移。
+	b.执行迁移文件，更新数据库。
+		python  manage.py  migrate  app_name
+
+			
+			
+			
+			
+			
+			
+			
+			
+	
+	

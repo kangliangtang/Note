@@ -1,0 +1,28 @@
+> use admin
+
+# 创建用户函数crateUser()
+> db.createUser(
+...  {
+...    user: "username",
+...    pwd: "password",
+...    roles: [
+...       { role: "readWrite", db: "testdb_one" },     # 在当前库下创建其他库的帐号，在admin库下创建test、abc库的帐号
+...       { role: "readWrite", db: "testdb_two" }         
+...    ]}
+... )
+
+
+> show users;                                   # 显示所有用户
+
+> use admin                                     # 只能在帐号创建库下认证，再去其他库进行操作
+
+> db.auth('username','password')                # 验证
+
+
+# 操作数据库，写入数据
+> use testdb_one
+> db.collection.insert({"a":1111,"b":2222})
+
+> use testdb_two
+> db.collection.insert({"a":1111,"b":2222})
+

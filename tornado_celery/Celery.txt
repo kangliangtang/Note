@@ -1,0 +1,6 @@
+exchange的使用BROKER_URL只能是rabbitmq，
+redis使用exchange和未使用效果一样
+
+tasks启动队列：
+    celery -A tasks worker -Q queue_1 --loglevel=debug
+	celery -A tasks worker -Q queue_2 --loglevel=info

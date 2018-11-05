@@ -1,0 +1,21 @@
+1. list列表操作
+	append()
+	extend()
+	都没有返回值,且不能添加空列表，空元素。
+
+2.RSA
+rsa_key = rsa.newkeys(2000)  # 数字越大加密的字段允许更长， 数字不可以过小
+# ras公钥
+rsa_public_key = rsa_key[0]
+# ras私钥
+rsa_private_key = rsa_key[1]
+
+
+3.编码 encode  decode
+byts -> string  使用decode(utf-8)
+byts <- string  使用encode(utf-8)
+
+
+
+
+pymysql 插入数据后必须提交后，才能入库看到数据

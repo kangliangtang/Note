@@ -1,0 +1,16 @@
+# 2018-7-5 15:32:43
+1.2 Kafka关键字：
+
+•Broker ： Kafka消息服务器，消息中心。一个Broker可以容纳多个Topic。
+
+•Producer ：消息生产者，就是向Kafka broker发消息的客户端。
+
+•Consumer ：消息消费者，向Kafka broker取消息的客户端。
+
+•Zookeeper ：管理Producer，Broker，Consumer的动态加入与离开。
+
+•Topic ：可以为各种消息划分为多个不同的主题，Topic就是主题名称。Producer可以针对某个主题进行生产，Consumer可以针对某个主题进行订阅。
+
+•Consumer Group： Kafka采用广播的方式进行消息分发，而Consumer集群在消费某Topic时， Zookeeper会为该集群建立Offset消费偏移量，最新Consumer加入并消费该主题时，可以从最新的Offset点开始消费。
+
+•Partition：Kafka采用对数据文件切片（Partition）的方式可以将一个Topic可以分布存储到多个Broker上，一个Topic可以分为多个Partition。在多个Consumer并发访问一个partition会有同步锁控制。

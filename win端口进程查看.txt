@@ -1,0 +1,4 @@
+查看端口
+netstat -ano|findstr 8000
+杀死
+taskkill /pid 13064 /f

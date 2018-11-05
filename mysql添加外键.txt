@@ -1,0 +1,27 @@
+1：创建一个父表，主键作为子表的外键：
+
+	1 create table province(
+	2     pId int primary key auto_increment,
+	3     pName varchar(20)
+	4 );
+	
+	
+2：创建子表，外键是父表的主键：
+
+		1 create table user(
+		2 userId int primary key auto_increment,
+		3 userName varchar(40),
+		4 pid int,
+		5 foreign key(pid) references province(pId)
+		6 );
+给一张表添加外键，即给子表的外键添加主键的规则：
+在子表声明一个字段pid int,用于作为子表的外键，foreign key(子表的外键字段) references 父表的表名（父表的主键的字段名）;
+
+
+
+
+3：当创建好数据表时添加外键约束：
+
+		alter table user add foreign key(pid) references province(pId);
+
+		alter table 子表的数据表名 add foreign key(子表的外键名称) references 父表的数据表名称（父表的主键名称）;

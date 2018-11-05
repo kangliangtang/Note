@@ -1,0 +1,57 @@
+#coding:utf-8
+#author:yanjing
+#date:2016/12/15
+import random
+import os
+import string
+import shutil
+fpindex=[]
+directoryname=[]
+filename=[]
+allname=[]
+x="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789"
+
+#此函数的作用为生成number位不重复的随机字符串，number最大为62
+def singlerandom(number):
+    stringy=''.join(random.sample(x,number)).replace(' ','')
+    return stringy
+
+#此函数的作用为生成number为可重复的随机字符串，number没有上限
+def couplerandom(number):
+    stringx=''.join(random.choice(x) for i in range(number))
+    return stringx
+
+#此函数的作用为删除已存在的文件夹
+def delete():
+    filelist=[]
+    filelist=os.listdir ("C:\Users\yanjing\Desktop\mypy\YJpython1")
+    for i in range(len(filelist)):
+        if filelist[i]!='YJpython1.py':
+            shutil.rmtree (filelist[i])
+
+#此函数的作用为创建文件夹、文件以及往文件中写入随机字符串
+#生成number个文件夹，每个文件夹中1个文件，每个文件中含有fileline行，每行有stringnumber个字符，当type为0时每行的字符不能重复，当type为1是每行的字符可以重复
+def createfileandwriterandomstring(number,fileline,type,stringnumber):
+    i=0
+    if type==0 and 0<stringnumber<63 or type==1:
+        for i in range(number):
+            directoryname.append("C:\Users\yanjing\Desktop\mypy\YJpython1\python%d" % i)
+            filename.append('python%d.txt'%i)
+            allname.append(directoryname[i]+'\\'+filename[i])
+            os.makedirs(directoryname[i])
+            fpindex.append ('fp%d' % i)
+            fpindex[i]=open(allname[i],'w+')
+            for j in range(fileline):
+                if type==0 and 0<stringnumber<63:
+                    fpindex[i].write(singlerandom(stringnumber))
+                elif type==1:
+                    fpindex[i].write(couplerandom(stringnumber))
+                fpindex[i].write('\n')
+            fpindex[i].close()
+
+if __name__ == "__main__":
+    try:
+        delete()
+        createfileandwriterandomstring(4,100,1,10)
+    except Exception,e:
+        print Exception,":",e

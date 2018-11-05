@@ -1,0 +1,13 @@
+pip install -r requirements.txt
+
+--------requirements.txt---------------
+Flask-Script==2.0.5
+Flask-SQLAlchemy==2.1
+Flask-WTF==0.12
+html5lib==0.9999999
+itsdangerous==0.24
+Jinja2==2.8
+Mako==1.0.4
+Markdown==2.6.6
+MarkupSafe==0.23
+PyMySQL==0.7.5

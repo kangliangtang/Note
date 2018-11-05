@@ -1,0 +1,15 @@
+ # 2018-7-4 15:31:14
+ # 判断数据库中表格是否存在 
+	
+	def table_exists(self, table_name):
+        """判断表是否存在"""
+        cs = self.cs
+        sql = "show tables;"
+        cs.execute(sql)
+        tables = [cs.fetchall()]
+        table_list = re.findall('(\'.*?\')', str(tables))
+        table_list = [re.sub("'", '', each) for each in table_list]
+        if table_name in table_list:
+            return 1                   # 存在返回1
+        else:
+            return 0                   # 不存在返回0

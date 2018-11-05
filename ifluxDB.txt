@@ -1,0 +1,26 @@
+# 2018-6-13 14:50:31
+
+时序数据库 ifLuxDB
+
+版本：influxdb version是1.0.2
+
+端口：
+	port 8083：管理页面端口，访问localhost:8083可以进入你本机的influxdb管理页面；
+	port 8086：http连接influxdb client端口，一般使用该端口往本机的influxdb读写数据。
+	
+
+https://dl.influxdata.com/influxdb/releases/influxdb-1.1.0.x86_64.rpm
+
+
+数据写入：
+	其中核心知识是数据格式,这里会自动打包字典到JSON,
+	一开始在这打包成JSON上传报错.而且需要把这个字典放在列表中,
+	因为一次可以添加多个字典格式上传.其中必须有'measurement数据库中的表','tags'各种有索引的属性,'fields'数据 三个Key.
+	
+	时间戳 time自动生成
+	
+	
+1529541204922612100	
+1529541205890812100
+
+

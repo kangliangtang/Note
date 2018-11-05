@@ -1,0 +1,27 @@
+# 2018-10-30 14:11:06
+import time
+
+
+# 时间戳
+s = time.time()
+print('s:', s)
+# 时间数组
+# time_array = time.localtime()
+time_array = time.gmtime()
+print('time array:', time_array)
+# 日期格式
+dt = time.strftime('%Y-%m-%d %H:%M:%S', time_array)
+print('dt:', dt)
+
+
+# 1、时间戳转日期 (秒 -> 数组 -> 日期）
+s = 1540878671
+array = time.gmtime(s)
+dt = time.strftime('%Y-%m-%d %H:%M:%S', array)
+print("时间戳转化的日期：", dt)
+
+# 2、日期转时间戳 （日期 -> 数组 -> 秒）
+dt = '2018-10-30 08:51:11'
+array = time.strptime(dt, '%Y-%m-%d %H:%M:%S')
+s = time.mktime(array)
+print("日期转化的时间戳：", s)
