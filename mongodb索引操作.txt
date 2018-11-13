@@ -16,3 +16,12 @@ db.test.drop_index("index_name")
 4.索引使用
 db.test.find({"索引字段名"："条件"})
 例：db.test.find({"age": 20})
+
+
+
+
+
+PS:
+  insert() 与 save() 区别：
+	   insert:  当主键"_id"在集合中存在时，不做任何处理。
+	     save:  当主键"_id"在集合中存在时，进行更新。

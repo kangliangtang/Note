@@ -1,0 +1,53 @@
+# 2018-11-8 14:23:34
+import pymongo
+ 
+myclient = pymongo.MongoClient('mongodb://username:password@localhost:27017/')
+mydb = myclient['runoobdb']
+mycol = mydb["sites"]
+# 当前数据库下所有集合名
+collist = mydb.list_collection_names() 
+ 
+mydict = { "name": "Google", "alexa": "1", "url": "https://www.google.com" }
+ 
+x = mycol.insert(mydict)
+y = mycol.find(mydict)
+s = mycol.update({ "name": "Google" }, { "$set": { "name": "baidu" } })
+
+
+---------------------------------------------------------------------------
+import pymysql
+ 
+db = pymysql.connect("localhost","testuser","test123","TESTDB" )
+# 使用 cursor()方法创建一个游标对象 cursor
+cursor = db.cursor()
+# 使用 execute() 方法执行 SQL 查询 
+cursor.execute("SELECT VERSION()")
+# 使用 fetchone() 方法获取单条数据.
+data = cursor.fetchone()
+
+# SQL 插入语句
+sql = """INSERT INTO EMPLOYEE(FIRST_NAME,
+         LAST_NAME, AGE, SEX, INCOME)
+         VALUES ('Mac', 'Mohan', 20, 'M', 2000)"""
+try:
+   # 执行sql语句
+   cursor.execute(sql)
+   # 提交到数据库执行
+   db.commit()
+except:
+   # 如果发生错误则回滚
+   db.rollback()
+
+# 关闭数据库连接
+db.close()
+
+
+---------------------------------------------------------------------------
+import redis
+
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD, db=REDIS_DB)
+redis_client.set("key", "val")
+redis_client.get("key")
+
+
+

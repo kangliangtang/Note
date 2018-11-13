@@ -1,0 +1,43 @@
+# 2018-11-8 09:13:24
+
+1.QUESTION:
+    分支提交
+	修改记录
+	合并冲突
+	版本后退
+
+	
+2.Kno:
+   日志：
+     git log 
+	 -p -1                    最近一次提交代码内容的修改记录
+	 --pretty=oneline      每个提交放在一行显示
+	 --author=''           指定人提交记录
+	 --after/before=''   指定时间之前/后
+	 --graph                分支合并记录
+	 
+	
+	本地同步更新：
+	  git pull  从远程仓库获取更新的代码，并合并到当前的工作分支
+	 
+	 
+	 分支:
+	   git branch testing          创建分支
+	   git checkout  testing      切换分支
+	   git checkout -b testing    创建分支并切换到指定分支（上2条命令的合体）
+	   git  merge testing          合并分支
+	   git  branch -d  testing    删除分支
+	   
+	   补丁修复操作：
+	      s1: git checkout -b bug  创建并切换至修复分支
+		       vim server.py          修改代码		   
+		  s2: git checkout master   回到主分支
+		  s3: git merge  bug         合并分支
+          s4: git push                上传代码		
+
+    版本回退：
+        git reset --hard commit_id	
+		  
+	   
+	
+	 

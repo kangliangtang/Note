@@ -1,0 +1,18 @@
+# 2018-11-7 14:30:55
+django:
+   django_wed
+      django_wed
+	     settings.py    所有设置，常量
+		 urls.py         路径分配
+		 view.py         视图处理
+	  
+	  apps 
+	     admin.py       显示管理页面
+		 models.py      模型类关联数据库库
+		 views.py       视图处理
+		 
+	  templates        html文件
+	  static         js css images 
+	  manage.py        控制文件
+		  
+		 
