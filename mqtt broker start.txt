@@ -1,0 +1,12 @@
+# 2018-11-19 15:52:16
+1.mosquitto  1883  MQTT.fx
+   >> mosquitto -c /etc/mosquitto/mosquitto.conf
+
+2.EMQ  1883     18083
+  >> cd emqx
+  >> ./bin/emqx start
+
+3.Apache 61613  61680
+  >> cd apache-apollo-1.7.1/bin/
+  >> ./apollo create mybroker
+  >> ./mybroker/bin/apollo-broker run

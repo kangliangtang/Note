@@ -1,0 +1,30 @@
+# 2018-11-19 16:44:16
+pip install nginx
+
+>> cd /etc/nginx
+>> vi nginx.conf
+>> 
+server {
+        listen       80;
+        server_name   www.7renbu.com 7renbu.com;                         # 域名(多个可以用空格隔离)
+        root         /home/kang/Work/Test/tornadoweb;                    # 项目路径
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+            proxy_pass http://127.0.0.1:8001;                           # 域名对应的url
+       }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+   }
+
+   
+server {...同上}
+

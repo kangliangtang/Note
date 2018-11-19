@@ -14,3 +14,20 @@
 •Consumer Group： Kafka采用广播的方式进行消息分发，而Consumer集群在消费某Topic时， Zookeeper会为该集群建立Offset消费偏移量，最新Consumer加入并消费该主题时，可以从最新的Offset点开始消费。
 
 •Partition：Kafka采用对数据文件切片（Partition）的方式可以将一个Topic可以分布存储到多个Broker上，一个Topic可以分为多个Partition。在多个Consumer并发访问一个partition会有同步锁控制。
+
+
+
+# 2018-11-19 14:34:53
+# 启动
+s1: >> zkserver，运行Zookeeper
+# 启动kafka
+s2:  cd  \kafka_2.11-1.1.0
+s3:  .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+# 终端创建kafka topic
+	.\bin\windows\kafka-topics.bat --create --zookeeper 127.0.0.1:2181 --replication-factor 1 --partitions 1 --topic test001
+# 查看所有topic
+	bin\windows\kafka-topics.bat --list --zookeeper 127.0.0.1:2181
+# 删除topic
+	bin\windows>kafka-topics.bat --zookeeper 127.0.0.1:2181 --delete --topic test001
