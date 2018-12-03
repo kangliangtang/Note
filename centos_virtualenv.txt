@@ -17,6 +17,10 @@ centos virtualenv使用
 	退出
     >>  deactivate   
 	
+	
+
+mkvirtualenv --python=/usr/local/python3/bin/python3.6 venv_py3
+
 
 ---------------------------------------------------------------------------------------
 1.1 安装成功显示如下：

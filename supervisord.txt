@@ -1,0 +1,9 @@
+错误：Unlinking stale socket /tmp/supervisor.sock
+解决： unlink /tmp/supervisor.sock
+
+$ supervisorctl reread
+如果重启的时候报错: 
+error: <class 'socket.error'>, [Errno 111] Connection refused: file: /usr/lib64/python2.6/socket.py line: 567
+则说明服务尚未启动，先启动即可:
+sudo supervisord -c /etc/supervisor/supervisord.conf
+sudo supervisorctl -c /etc/supervisor/supervisord.conf
