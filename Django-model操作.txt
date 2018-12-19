@@ -1,0 +1,68 @@
+# 2018-12-17 08:25:32
+  1.连表结构
+     一对一   models.OneToOneField('其他表名称')
+     一对多   models.ForeignKey('其他表名称')
+	 多对多   models.ManyToManyField('其他表名称')
+	 
+  2.常用字段
+     models.DateTimeField()     # 日期字段
+	 # 参数：
+	   auto_now = True 每次更新后自动更新时间
+	   auto_now_add = True 第一次创建时间，更新字段时间不在改变
+     
+	 models.CharField()　　     # 字符串字段
+     models.IntegerField()      # 整形字段
+	 models.ImageField()        # 图片字段
+	   
+	3.常用参数
+	   null = True               # 数据库中是否可以为空
+	   blank = True             # Admin后台添加数据时，是否可以为空
+	   primary_key             # 主键
+	   max_length              # 长度
+	   verbose_name           # Admin后台显示名称
+	   unique=True            # 唯一
+	   choices                 # 选择  tuple
+	   upload_to              # 上传文件路径
+	   
+	   
+	4.对数据操作
+	   4.1增：
+	     models.UserInfo(user='kk', age=18)
+		 或
+		 models.UserInfo.objects.create(user='kk', age=18)
+		 或
+		 dic = {user='kk', age=18}
+		 models.UserInfo.objects.create(**dic)
+	   
+	   4.2删：
+	     models.UserInfo.filter(user='kk').delete()
+		 
+	   4.3改：
+        models.UserInfo.filter(user='kk').update(age=20)
+        或
+		obj = models.UserInfo.objects.get(user='kk')
+		obj.age = 20
+		obj.save()
+		
+	   4.4查：
+	    models.UserInfo.objects.all()                                    # 所有
+		models.UserInfo.objects.all().values('user')                  # 只取user列
+		models.UserInfo.objects.all().values_list('id', 'user')     # 取出id, user 两列并形成列表
+	    models.UserInfo.objects.filter(user='kk').count()            # 获取个数
+	    models.UserInfo.objects.filter(id__gt=1, id__lt=10)          # 获取id大于1 且小于10
+		models.UserInfo.objects.filter(id__range=[1, 10])      
+		models.UserInfo.objects.filter(user='kk').order_by('id')     # 排序
+		
+		
+		
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	 
+	 

@@ -1,6 +1,7 @@
 import os
 import time
-file='/Volumes/Leopard/Users/Caroline/Desktop/1.mp4'
+# file='/Volumes/Leopard/Users/Caroline/Desktop/1.mp4'
+file='1.mp4'
 
 
 

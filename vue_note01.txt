@@ -1,0 +1,39 @@
+# 2018-12-4 15:34:01
+1.创建一个基于webpack模板的新项目
+	$ vue init webpack my-project
+    # 这里需要进行一些配置，默认回车即可
+
+2.语法
+  2.1 插值
+   1. 文本       {{ msg }}
+   2. html      v-html="msg"
+   3. 属性       v-bind:
+   4. 表达式     {{ 5 + 5 }}
+   5. 指令       v-if=''        v-if 指令将根据表达式的值(true 或 false )来决定是否插入 p 元素。
+   6. 用户输入    v-model        在 input输入框中我们可以使用v-model指令来实现双向数据绑定<p>{{ message }}</p><input v-model="message">
+   7. 监听       v-on           <button v-on:click="reverseMessage">反转字符串</button>
+
+   8. 缩写    v-bind:href  -> :href
+             v-on:click   ->  @click
+
+   9.对象添加一个新的属性的时候，不能直接添加，必须使用 Vue.set;   Vue.set(this.func, 'count', 1)
+
+  2.2 语句
+    1.条件语句
+      <div v-if='a == 1'></div>
+      <div v-else-if='a == 2'></div>
+      <div v-else></div>
+
+      <div v-show='ok'></div>
+
+    2.循环语句
+      <li v-for="n in 10">
+      {{ n }}
+      </li>
+      <li v-for="(value, key, index) in object">
+      {{ index }}-{{ key }} : {{ value }}
+      </li>
+	  
+	
+	  
+	
