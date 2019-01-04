@@ -26,6 +26,7 @@
 	   
 	   
 	4.对数据操作
+	   get获得是一个字典对象， filter获取的是一个列表对象
 	   4.1增：
 	     models.UserInfo(user='kk', age=18)
 		 或
@@ -46,12 +47,20 @@
 		
 	   4.4查：
 	    models.UserInfo.objects.all()                                    # 所有
-		models.UserInfo.objects.all().values('user')                  # 只取user列
-		models.UserInfo.objects.all().values_list('id', 'user')     # 取出id, user 两列并形成列表
-	    models.UserInfo.objects.filter(user='kk').count()            # 获取个数
-	    models.UserInfo.objects.filter(id__gt=1, id__lt=10)          # 获取id大于1 且小于10
+		models.UserInfo.objects.all().values('user')                     # 只取user列
+		models.UserInfo.objects.all().values_list('id', 'user')          # 取出id, user 两列并形成列表
+	    models.UserInfo.objects.filter(user='kk').count()                # 获取个数
+	    models.UserInfo.objects.filter(id__gt=1).filter(id__lt=10)       # 获取id大于1 且小于10
 		models.UserInfo.objects.filter(id__range=[1, 10])      
-		models.UserInfo.objects.filter(user='kk').order_by('id')     # 排序
+		models.UserInfo.objects.filter(user='kk').order_by('id')         # 排序
+		或or
+		from django.db.models import Q
+		models.UserInfo.objects.filter(Q(user='kk') | Q(age=18))     
+		与and
+		models.UserInfo.objects.filter(Q(user='kk') & Q(age=18)) 
+		
+		
+		
 		
 		
 		

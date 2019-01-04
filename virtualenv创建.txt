@@ -20,6 +20,8 @@ centos virtualenv使用
 	
 
 mkvirtualenv --python=/usr/local/python3/bin/python3.6 venv_py3
+或
+mkvirtualenv -p python3 venv_py3
 
 
 ---------------------------------------------------------------------------------------

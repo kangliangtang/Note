@@ -1,0 +1,29 @@
+# 2018-12-25 11:33:10
+
+def func(s):
+    # 12小时制的 12:50AM 对应 24小时制的 00:50
+    # 12小时制的 12:50PM 对应 24小时制的 12:50
+    w = s[-2:]
+    h = int(s[:2])
+    T = None
+    if w.lower() == "am":
+        if h == 12:
+            h = '00'
+            T = h + s[2:-2]
+        else:
+            T = s[:-2]
+    elif w.lower() == "pm":
+        if h == 12:
+            T = s[:-2]
+        else:
+            h = h + 12
+            T = str(h) + s[2:-2]
+    else:
+        pass
+    return T
+
+
+if __name__ == '__main__':
+    s = '12:40:22PM'
+    T = func(s)
+    print(T)

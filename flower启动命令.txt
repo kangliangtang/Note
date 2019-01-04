@@ -1,0 +1,5 @@
+# 2018-12-28 16:00:36
+打开终端：
+>> celery flower --broker=amqp://guest:guest@localhost:5672//
+
+>> celery flower --broker=amqp://foxconn:Foxconn888!!@localhost:5672//

@@ -1,0 +1,43 @@
+# 2019-1-2 10:56:36
+celery常见错误解决：
+
+错误一：
+ 首先，celery_tasks要放到根目录下否则会报如下错误：
+	[2018-11-04 16:56:17,616: ERROR/MainProcess] Received unregistered task of type 'home_application.celery_tasks.update_deployment'.
+	The message has been ignored and discarded.
+
+	Did you remember to import the module containing this task?
+	Or maybe you are using relative imports?
+	Please see http://bit.ly/gLye1c for more information.
+
+	The full contents of the message body was:
+	{'utc': False, 'chord': None, 'args': [], 'retries': 0, 'expires': None, 'task': 'home_application.celery_tasks.update_deployment', 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'kwargs': {'args': [u't-p', u't-p-others-t-m', 1, {'module_id': u'19', 'proj_code': u't-p'}, u'10.131.178.174/daocloud/m19:20181104.163755', 80, 1, 1073741824, u'/sample/', 'default']}, 'eta': None, 'id': '389534de-2b58-4a76-a237-be1189b724ef'} (411b)
+	Traceback (most recent call last):
+	  File "/data/bkce/paas_agent/apps/Envs/adm/lib/python2.7/site-packages/celery/worker/consumer.py", line 455, in on_task_received
+		strategies[name](message, body,
+	KeyError: 'home_application.celery_tasks.update_deployment'
+
+	
+	
+错误二：
+ 若celery_tasks文件放在自建的celery_app模块中时，需要配置如下：
+	1. celery_config.py 配置文件
+		CELERY_IMPORTS = (
+			# 这里要注意，配置好路径，否则也会报上述错误
+			'celery_app.celery_tasks',
+		)
+	2.celery_app/init.py
+	   from celery import Celery
+	   app = Celery('celery_app')
+	   app.config_from_object('celery_app.celery_config')
+
+
+
+错误三：
+ # 启动worker
+   celery -A celery_app worker -Q queue_1 --loglevel=INFO --concurrency=10 -P eventlet -n worker1.%h
+   参数说明： --loglevel         日志等级
+              --concurrency=10   并发字进程数(默认为cpu的核数) PS:多个worker之间不重复消费
+              -P eventlet        防止celey4 报错Celery ValueError: not enough values to unpack (expected 3, got 0)
+	          -n worker1.%h      命名worker名称，防止出现命名重复警告。
+
