@@ -1,0 +1,65 @@
+# 2019-1-7 08:43:23
+Target：celery的简单使用
+  安装: pip install celery
+  
+  celery文件 celery_app 
+      1. 配置参数
+          celery_config.py
+      2. 异步任务
+          tasks.py 
+      3. 调用
+	      handler.py
+	      handler.py
+  
+  
+1.常用配置参数(celery_config.py)：
+    from kombu import Exchange, Queue
+    from celery import platforms
+    platforms.C_FORCE_ROOT = True        # root用户可启动
+
+    BROKER_URL = 'amqp://username:password@127.0.0.1:5672//'                          # broker采用rabbitMQ
+    CELERY_RESULT_BACKEND = 'rpc://'                                                  # 任务结果存储位置
+    CELERY_IMPORTS = ('celery_app.tasks',  # 这里要注意，配置好路径，否则会报错)      # 应用模块导入
+    CELERY_QUEUES = (
+                     Queue("default", Exchange("default"), routing_key="default"),
+                     Queue("queue_1", Exchange("queue_1"), routing_key="queue_1", consumer_arguments={'x-priority': 10}),
+    ) # consumer_arguments 优先级；数值越大，级别越高。	
+	CELERY_ROUTES = {
+					 'celery_app.tasks.warning_worker': {"queue": "queue_1", "routing_key": "queue_1"},
+					 'celery_app.tasks.task_worker': {"queue": "queue_2", "routing_key": "queue_2"},
+	} # 多队列
+    TASK_TIME_LIMIT = 1800                                                         # 任务超时限制
+    CELERY_TASK_RESULT_EXPIRES = 60 * 5                                            # 任务过期时间
+    WORKER_PREFETCH_MULTIPLIER = 1                                                 # 任务预取数
+    WORKER_MAX_TASKS_PER_CHILD = 100                                               # Worker最大的任务执行数（执行完后销毁单个worker）
+
+	
+2.异步任务定义(tasks.py)：
+	1.实例化一个对象：
+	  from celery import Celery
+      app = Celery('celery_app')
+      app.config_from_object('celery_app.celery_config')
+	2.装饰异步任务：
+	  @app.task
+	  def worker_func(data):
+	      pass
+
+		  
+3.调用异步任务(handler.py)：
+    from celery_app.tasks import worker_func
+	ret = worker_func.apply_async(args=[data,])
+	resp = ret.get()
+
+	
+PS:
+	worker启动命令：
+	  celery -A celery_app tasks --loglevel=INFO -P eventlet -n worker1.%h
+	  
+	  
+	消息监控：
+	  pip install flower
+	  指定broker并启动：
+		celery flower --broker=amqp://guest:guest@localhost:5672//  或
+		celery flower --broker=redis://guest:guest@localhost:6379/0
+
+	     
