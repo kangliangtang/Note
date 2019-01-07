@@ -1,0 +1,32 @@
+# 2019-1-7 10:05:11
+Target: tornado项目创建使用
+  tornadoweb/
+	├── application.py
+	├── celery_app
+	│   ├── celery_config.py
+	│   ├── __init__.py
+	│   └── tasks.py
+	├── conf
+	│   └── myconfig.py
+	├── handler
+	│   ├── __init__.py
+	│   └── tornado_handler.py
+	├── requirements.txt
+	├── server.py
+	└── url.py
+
+文档结构说明
+  项目配置
+     application.py
+  自建应用模块
+     celery_app
+  自建默认配置参数文件
+     conf
+  逻辑处理文件
+     handler
+  项目入口服务启动
+     server.py
+  项目路由配置
+     url.py
+
+	 
