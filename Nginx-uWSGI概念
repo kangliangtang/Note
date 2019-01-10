@@ -1,0 +1,14 @@
+# 2019-1-9 09:05:50
+Title: 
+     Nginx -- uWSGI概念理解
+
+1. Nginx
+     nginx是一款轻量级的反向代理服务器
+
+2. uWSGI
+     uWSGI是一个Web服务器，实现了WSGI和uwsgi、http等协议
+
+  PS:
+	WSGI是一种通信协议
+	uwsgi是一种线路协议，常用于uWSGI和其他网络服务器之间的数据通信
+ 

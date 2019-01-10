@@ -1,0 +1,40 @@
+# 2019-1-10 09:58:53
+Title: doctest测试模块使用（python内置）
+
+1.项目与测试实例在同一文件下（test.py）
+    def multiply(a, b):
+        return a * b
+
+
+	def testst():
+		"""
+		>>> multiply(4, 3)
+		12
+		>>> multiply('a', 3)
+		'aaa'
+		"""
+
+
+	if __name__ =='__main__':
+		import doctest
+		doctest.testmod(verbose=True)
+		
+		
+		
+2.单独建立测试文件（test2.txt）
+	import doctest
+
+	def test():
+		"""
+		>>> from test import multiply
+		>>> multiply(4, 3)
+		12
+		>>> multiply('a', 3)
+		'aaa'
+		"""
+
+
+	if __name__ == '__main__':
+		doctest.testmod(verbose=True)
+		
+	# 运行命令：python -m doctest -V test2.txt
