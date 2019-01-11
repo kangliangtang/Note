@@ -1,0 +1,17 @@
+﻿# 2019-1-11 16:27:28
+pymongo
+
+insert() 和 save()的区别
+ 1.区别一：
+    insert()直接往库中插入数据，不更新已存在的重复数据。
+    save() 往数据库插入数据时，会更新重复的数据。
+  
+ 2.区别二：
+    insert() 可以直接插入一个列表，无需遍历，效率高。
+    save() 不能直接插入列表，需要遍历列表，逐一插入。
+	
+PS:
+  需求: 将表中所有 姓名(name) 或 描述(desc)中带有 'kk' 的数据记录查询出来，获取前10条并按更新时间排序 。
+  ret_all = mycol.find({'$or':[{'name':{'$regex':'kk'}}, {'desc':{'regex':'kk'}]}, {'_id':0}).sort({'update_time':-1}).limit(10)
+  for ret in ret_all:
+      print(ret)

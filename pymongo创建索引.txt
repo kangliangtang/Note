@@ -1,0 +1,15 @@
+# 2019-1-11 17:23:43
+pymongo创建索引
+
+from pymongo import IndexModel
+
+# 普通索引
+index_01 = IndexModel([('字段名', pymongo.DESCENDING)], name='自定义索引名')
+mycol.create_indexes([index_01])
+
+# 唯一索引
+mycol.create_index([("字段名", 1)], unique=True)
+
+# 复合索引
+fuhe_index = IndexModel([('字段名01', pymongo.ASCENDING), ('字段名02', pymongo.ASCENDING)], name='自定义索引名')
+mycol.create_indexes([fuhe_index])

@@ -1,0 +1,27 @@
+# 2019-1-11 15:10:38
+# 用户名：postgres  密码：postgresql
+# 连接： 开始  -> sql shell 
+
+1.建库
+ create database db_name;    # 此时需要关闭其他数据库连接，否则会报错。
+ 
+2.建表
+   # 切换数据库
+    \c db_name    
+ 
+   # 建表语句
+   create table if not exists myTableName(
+									id serial PRIMARY KEY,
+									name char(11) NOT NULL,
+									creationtime timestamp(6) with time zone
+    );
+	
+
+3.查看所有数据库
+   \l或\list
+
+4.查看所有表
+   \d
+  表结构
+   \d  tablename
+
