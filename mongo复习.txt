@@ -1,0 +1,51 @@
+# 2019-1-14 16:55:12
+1.数据操作
+   增：
+     insert(data)     # data可以是字典或列表
+     save(data)       # data只能是字典，且会对数据库已存在的记录进行更新。    
+	
+   删：
+     remove({'id': 1})
+   
+   改：
+     update({'id': 1}, {$set: newdata})
+     update({'id': 1}, {$set: newdata}, {multi: true})     # multi 更新多条，默认为Fasle只更新第一条
+   
+   查：
+     find_one({})                                   # 查询一条
+	 find({})                                       # 查询所有，结果需要遍历
+     
+	 # a.条件查询 
+     find({'age':{$lte: 18}})                       # 小于等于	 
+     find({'age':{$gte: 18}})                       # 大于等于
+     find({'age':{$ne: 18}})                        # 不等于
+	 
+	 # b.逻辑查询
+	 find({'name':'kk', 'age': 18})                 # AND
+	 find({$or:[{'age':18}, {'height': 130}])       # OR
+     
+     # c.通过数据类型(type)查询  ☆☆☆☆
+     find({'title': {$type: string}})	            # 查询数据类型为string的数据结果
+    
+     # d.结果筛选条件
+     find({}).limit(1).skip(1) 	                    # 显示文档的第二条记录数1据 
+     find({}).sort({'key': 1}) 	                    # 排序，1升序  -1降序
+  
+  
+2. 添加大文件到mongodb数据库
+   GridFS 是文件的一种存储方式，可以更好的存储大于16M的文件;
+          存储方式是：将大文件对象分割成多个小chunk(文件片段)，每一个chunk作为一个文档存储到集合中。
+    
+   # 往数据库添加文件命令（调用mongo/bin下的mongofiles.exe）
+   > mongofiles.exe  -d  数据库名  put  文件名              # 数据库名会自动创建
+   
+   # 查看数据
+   > db.fs.files.find()
+   
+   
+   
+   
+
+		  
+
+

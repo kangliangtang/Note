@@ -1,0 +1,11 @@
+# 2019-1-15 16:50:41
+
+sys.argv[]是用来获取命令行输入的参数的(参数和参数之间空格区分),
+sys.argv[0]表示代码本身文件路径,所以从参数1开始,表示获取的参数了
+
+
+> python  test.py  v1  v2
+
+sys.argv[0]  =  test.py 
+sys.argv[1]  =  v1
+sys.argv[2]  =  v2

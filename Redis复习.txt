@@ -1,0 +1,94 @@
+# 2019-1-15 11:26:13
+1. 五种数据类型
+   字符串 string
+   哈希   hash
+   列表   list
+   集合   set
+   有序集合 zset
+   
+2.数据操作：
+  2.1 添加操作：
+        字符串： SET key  val
+   
+        哈希： HSET myhash key01 val01  key02  val02
+  
+        列表： lpush  l_key  l_val01
+               lpush  l_key  l_val02
+  
+        集合：sadd  key  val
+	
+        有序集合： zadd  key  score  member 
+	
+ 2.2 获取操作：
+        字符串：get  key
+   
+        哈希：  hget  myhash key01
+   
+        列表：  lrange  l_key  0  -1
+   
+        集合：  smembers  key
+   
+        有序集合：
+		     zrange  key  0  -1
+			 zrangebyscore  key  0  100       # 根据权重数值范围查询
+  
+  2.3 清楚当前库中的所有key
+       flushdb
+  
+	
+3.事务执行  ☆☆☆☆
+    (注意：事务可以理解为一个打包的批量执行脚本，
+	 但批量指令并非原子化的操作，中间某条指令的失败不会导致前面已做指令的回滚，也不会造成后续的指令不做。)
+
+    事务执行顺序：
+       a.开始事务  MULTI
+	   b.命令入队  set key val;  get  key; ....
+	   c.执行事务  EXEC
+	     (取消事务  DISCARD)
+
+		
+4.Python redis 操作
+   连接： 
+      import  redis
+      r = redis.Redis(host='127.0.0.1', port=6379, password='123456')
+    
+   连接池
+	  pool = redis.ConnectionPool(host='127.0.0.1', port=6379)
+	  r = redis.Redis(connection_pool=pool)
+
+   管道(用于执行多个命令)
+	  pipe = r.pipeline(transaction=True)        # transaction=True 下一个操作为原子性操作
+	  pipe.set('key01', 'val01')
+	  pipe.set('key02', 'val02')
+	  pipe.execute()
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
