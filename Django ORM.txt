@@ -1,0 +1,12 @@
+# 2019-5-10 11:33:45
+
+ORM:
+  get() 与 filter()的区别
+	  1. get()方法获取单个匹配对象，当数据库中此对象不存在或存在多个，则会报错！
+	  2. filter() 方法获取一个列表对象，不存在时返回<QuerySet []>
+	  3. get() 返回结果可以使用‘.字段名’, 例如获取name属性值， ret = TestMoldel.objects.get(id=1)   name = ret.name 
+	  4. filter() 返回结果不可使用‘.字段名’,  可以使用.values('name') 返回一个列表。
+	  
+
+bug:
+    传参为None时，可表示一个空对象。

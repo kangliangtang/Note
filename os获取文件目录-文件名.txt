@@ -1,0 +1,11 @@
+# 2019-7-12 19:54:03
+    import os
+
+    file_path = 'D:\\Work/test.txt'
+    file_dir = os.path.dirname(file_path)
+    file_name = os.path.basename(file_path)
+    print("文件目录:", file_dir)
+    print("文件名:", file_name)
+
+    >> 文件目录: D:\Work
+    >> 文件名: test.txt

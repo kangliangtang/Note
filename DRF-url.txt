@@ -1,0 +1,37 @@
+# 2019-4-24 17:55:56
+ 1.  @detail_route(methods=['GET'])    # 带pk 不能用list_route; 此时请求url: http://127.0.0.1:8000/project/{pk}/get
+        def get(self, request, pk):
+		    pass
+			
+ 2. creat() 默认返回 code==201
+ 
+ 
+ 3. 继承ListAPIView 里没有post方法，可以自定义扩展(不需要加装饰器)def post(self, request)：pass
+    此时POST请求会直接响应自定义的post方法。
+	
+ 4. 继承非ModleViewSet类， 无法使用routers添加路由(url)。
+ 
+ 
+ 5. validate验证器， 在serializers.py 定的序列化模型中，可以添加自定义 validate_<field_name> 判断指定字段值的属性是否符合要求。
+      例：def validate_status(self, status):
+				if self.context['request'].status == True:
+					return status
+				else:
+					raise serializers.ValidationError('状态不符合')
+					
+  6.装饰器只能装饰在视图类里的对应方法之上。
+    url(r'^report/(?P<pk>\d+)/$',views.ResultReportAPIView.as_view())
+	
+	def get(self, request, pk):
+		 book = self.get_object()           # get_object()方法根据pk参数查找queryset中的数据对象
+		
+  7. serializers.py
+      @transaction.atomic 事务
+	  
+	  
+  8.ORM 反向查询
+    对象查询  obj.表名_set()
+      publisher_obj = models.Publisher.objects.first()  # 找到第一个出版社对象
+      books = publisher_obj.book_set.all()  # 找到第一个出版社出版的所有书
+      titles = books.values_list("name")  # 找到第一个出版社出版的所有书的书名
+		 

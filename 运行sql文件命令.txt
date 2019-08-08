@@ -1,0 +1,2 @@
+# 2019-6-5 09:08:36
+MySQL [db]>  source /usr/test.sql

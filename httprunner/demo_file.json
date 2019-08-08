@@ -1,0 +1,44 @@
+[
+    {
+        "config": {
+            "name": "testcase description",
+            "variables": {}
+        }
+    },
+    {
+        "test": {
+            "name": "/api/get-token",
+            "request": {
+                "url": "http://127.0.0.1:8000/API/project/interface/upload",
+                "method": "POST",
+                "headers": {
+					"projectid": "23",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+					"Authorization": "bearer 226f6f32-20bd-44c2-a2c5-21619a6f3429",
+                    "Cookie": "access_token=226f6f32-20bd-44c2-a2c5-21619a6f3429; token_type=bearer"
+                },
+				"data":{
+					"project_id":23,
+                    "module_id":107,
+                    "file_type":0
+				},
+                "files":{
+                  "json_file":["postman_collection.json", "$file1", "application/json"]
+                }
+            },
+            "extract": [
+                {"list": "content.data"}
+            ],
+            "validate": [
+                {"eq": ["status_code", 200]},
+                {"eq": ["content.data.success", true]}
+            ],
+          "variables":{
+            "filePath": "D:\\upload\\postman_collection.json",
+            "file1": "${get_file($filePath)}"
+          }
+        }
+    }
+]
+
+

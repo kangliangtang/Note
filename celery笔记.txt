@@ -1,0 +1,9 @@
+# 2019-5-6 16:54:07
+
+# flower 启动
+celery flower --broker=redis://127.0.0.1:6379/0
+或
+celery flower --broker=amqp://guest:guest@10.0.49.90:5672/celery_test
+
+# celery 启动
+celery -A Project worker -l info 

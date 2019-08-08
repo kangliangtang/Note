@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "83251be2-5922-4359-a144-34c6259af0f4",
+		"name": " 门户",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "测试退出22",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "crctoken",
+						"value": "2123132132132131",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://10.0.99.102:8050/crcloud-account/loginout",
+					"protocol": "http",
+					"host": [
+						"10",
+						"0",
+						"99",
+						"102"
+					],
+					"port": "8050",
+					"path": [
+						"crcloud-account",
+						"loginout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "设置用户邮箱22",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "crctoken",
+						"value": "2132132132132132131",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"3333@qq.cpm\",\r\n  \"emailCode\": \"323\"\r\n}"
+				},
+				"url": {
+					"raw": "http://10.0.99.102:8050/crcloud-account/setUserEmail",
+					"protocol": "http",
+					"host": [
+						"10",
+						"0",
+						"99",
+						"102"
+					],
+					"port": "8050",
+					"path": [
+						"crcloud-account",
+						"setUserEmail"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

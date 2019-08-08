@@ -1,0 +1,38 @@
+# 2019-4-29 15:27:52
+
+---------------安装配置------------------------------------------------------------------------
+1、添加官方gitlab官方仓库？？？这一步操作不明白什么意思，反正安装官网来先。
+
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
+
+2、安装最新版本的gitlab runner，当然，也可以安装特定版本，参照官方连接
+
+yum install gitlab-runner
+
+3、然后就可以注册信息到gitlab了。
+
+gitlab-runner register
+
+输入后会让你输入gitlab ci 协调者的url，这个是需要在安装的gitlab上面找的，步骤：设置=>Overview=>Runners然后就可以看到了，参考下图
+
+
+4、然后让你输入token，这里也看的到。
+
+5、再然后让你输入gitlab-ci runner的描述信息，自己看着填吧，以后也可以在gitlab页面上进行修改
+
+6、然后添加一个tag，以后也可以在页面修改，也可以不输入调过去
+
+7、选择executor运行方式，官网使用的docker，其他教程都选择shell，选择docker需要选择一个镜像什么的，我使用shell
+
+
+
+-------------------------命令----------------------------------------
+查看：
+  在服务器上执行
+    gitlab-ci-multi-runner list
+
+状态：
+   gitlab-ci-multi-runner verify
+
+重启runner：
+   gitlab-ci-multi-runner restart

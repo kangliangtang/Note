@@ -1,0 +1,17 @@
+# 2019-8-8 13:50:49
+from rest_framework import serializers
+1.继承 serializers.ModelSerializers
+   校验参数 
+   def  validate_name(self, name):
+       if name == 'ksf':
+	       raise serializers.ValidationError('姓名错误')
+	   return name
+	   
+2.继承 serializers.Serializers
+  校验参数
+   def validate(self, attrs):
+       # attrs 相当于 request.data
+	   if attrs['minnum'] > attrs['maxnum']:
+	       raise serializers.ValidationError('数值输入错误')
+	   del attrs['name']
+	   return attrs

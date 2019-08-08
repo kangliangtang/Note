@@ -1,0 +1,9 @@
+# 2019-6-11 11:36:06
+uWSGI 通过 xxx.ini 启动后会在相同目录下生成一个 xxx.pid 的文件，里面只有一行内容是 uWSGI 的主进程的进程号。
+
+#### 启动：
+uwsgi --ini xxx.ini
+#### 重启：
+uwsgi --reload xxx.pid
+#### 停止：
+uwsgi --stop xxx.pid

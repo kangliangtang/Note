@@ -1,0 +1,2 @@
+可以用Firefox打开https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/，
+在这里边找到和当前firefox版本兼容的selenium ide，添加到firefox，点击”Add to Firefox”就可以了
