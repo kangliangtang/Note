@@ -1,0 +1,13 @@
+
+netstat -lnp|grep 8085
+nohup python3 manage.py runserver 0.0.0.0:8085 > /dev/null 2>&1  &
+
+方法1
+celery -A automate_uitest_py3 worker -l info
+方法2
+celery -A automate_uitest_py3 multi start w1 --logfile=../logs/celerylog.log
+停止
+celery -A automate_uitest_py3 multi stop w1 --logfile=../logs/celerylog.log
+
+
+
