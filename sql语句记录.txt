@@ -1,0 +1,10 @@
+# 2019-12-5 09:06:29
+
+1.查询存在一张表中而不在另一张表中的数据
+  select A.* from A left join B on A.id=B.fk_id where B.id is null;
+  
+  
+  
+update tb_test_task INNER JOIN 
+(select t1.id from tb_test_task t1 LEFT JOIN tb_result_report t2 on t1.id=t2.testCaseTask_id where t1.task_status='running' and t1.is_delete=0 and t2.id is null) t3
+on tb_test_task.id=t3.id set tb_test_task.task_status='unexecuted';

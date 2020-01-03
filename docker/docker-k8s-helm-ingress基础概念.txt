@@ -1,0 +1,13 @@
+# docker k8s ingress helm
+              N       N          N          N
+服务端 docker ->  Pod -> service -> ingress -> 用户
+
+deployment.yaml 自动拉起销毁的Pod
+
+Pod + service + configMap => k8s                                # docker的管理机制, configMap环境变量配置文件
+
+service.yaml + ingress.yaml + deployment.yaml ..yaml <= helm  包管理文件一键生成工具
+
+ingress 是Nginx 的简单封装， 可以通过ingress.yaml 文件配置Nginx的配置
+
+

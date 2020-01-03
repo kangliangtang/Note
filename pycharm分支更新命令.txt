@@ -1,0 +1,4 @@
+# 2019年12月6日11:21:15
+1.查看最新远程分支
+git remote update origin --prune
+

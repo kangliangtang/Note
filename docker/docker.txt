@@ -17,15 +17,17 @@ $ sudo docker exec -it 775c7c9ee1e1 /bin/bash
 # 容器日志
 kubectl get pod -n c7n-system | grep ui
 kubectl log -f ui-automate-websocket-77844686f6-6r7r9   -n c7n-system
-kubectl log -f ui-automate-websocket-6d6466c4-9sf44   -n c7n-system
+
 
 # 进入指定容器
-kubectl exec -it ui-automate-websocket-775d66dcf4-58jxf  -n c7n-system -- /bin/bash
+kubectl exec -it automate-service-7f7d9f69b9-s8shr   -n c7n-system -- /bin/bash
+kubectl exec -it    -n c7n-system -- /bin/bash
 
 # 查看文件映射是否成功
 kubectl exec -it ui-automate-websocket-775d66dcf4-58jxf  -c etc sh
 
-
+# 删除容器
+kubectl delete pod perf-test-service-9 -n c7n-system
 
 
 docker login -u appuser -p Sys@2020#c registry.steam.crcloud.com/docker/library/python:3.5.6
