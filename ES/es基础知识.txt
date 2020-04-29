@@ -1,0 +1,81 @@
+# 2020-2-12 15:12:37
+ElasticSearch
+一、概念
+   1. index 索引
+       类似于mysql 数据库名
+   
+   2. type 类型  （7.0版本后，只允许一个index下只有一个type）
+       类似于mysql 表名
+	   
+   3. field
+       类似于mysql 列名
+   
+   4. document
+       类似mysql (单)行记录
+	   
+   5. mapping 映射
+       类似mysql scheme; 约束条件，定义字段的数据类型
+	   核心数据类型
+	     true, false  --> boolean
+	     110          --> long
+	     12.22        --> double
+	     2020-01-01   --> date
+		 {}           --> object
+	     “fdsfds”     --> string  (text, keyword) keyword表示支持分词搜索
+	   
+	   手动创建mapping
+	   PUT /myindex1
+	       {
+		    "settings":{"number_of_shards":3, "number_of_replicas":0},
+			"mappings":{
+			   "properties":{
+				   "title":{"type":"text"},
+				   "name":{"type":"text", "analyzer":"standard"},
+				   "date":{"type":"date", "index":false},
+				   "price":{"type":"double"},
+				   "number":{"type":"integer"}
+			   }
+			}
+		   }
+		往自定义的mapping 中添加数据
+		PUT
+		
+		查看mapping
+		GET /myindex/_mapping
+	   
+	   
+	   
+二、API接口
+    1.GET 查询
+	   获取指定id文档信息  /myindex/mytype/id
+	   通过字段名搜素      /myindex/mytype/_search?q=date:2020-01-01
+	                      
+	                       
+	2.PUT 更新/新增
+	    id存在时更新对应id的文档，不存在时新增。
+	    /myindex/mytype/1 {"id":1, "date":"2020-01-01", "info":"this is test"}
+		
+    3.POST 更新/新增/查询
+	    id存在时更新对应id的文档，不存在时新增。
+	    /myindex/mytype/1 {"id":1, "date":"2020-01-01", "info":"this is test"}
+		指定字段名查询
+		/myindex/mytype/_search {"query":{"match":{"date":"2020-01-01"}}}
+		多条件查询
+		/myindex/mytype/_search {"query":{"match":{"name":"zhangsan wangwu"}}}
+	   
+    
+	3.DELETE 删除
+	   /myindex/mytype/1 
+	   
+	
+	
+     
+	
+		
+		
+		
+	 
+	   
+	   
+	 
+   

@@ -1,0 +1,12 @@
+# 2020-02-11 10:51:46
+1. 下载
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.5.2.tar.gz
+tar -zxvf elasticsearch-7.5.2.tar.gz
+
+sudo vi config/elasticsearch.yml
+
+
+/home/kang/elasticsearch-7.5.2
+network.host: 0.0.0.0
+http.port: 9200
+

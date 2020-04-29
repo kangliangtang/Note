@@ -1,0 +1,18 @@
+source venv/bivn/activate   # 先激活本地虚拟环境
+
+pip freeze > requirements.txt 
+
+在开发环境先下载好离线包：pip download -d your_offline_packages -r requirements.txt
+
+打包your_offline_packages，并copy到目标环境
+
+在目标环境创建新的virtualenv环境并激活:
+
+virtualenv -p python_path venv
+
+source venv/bivn/activate
+
+批量安装离线安装包
+
+pip install --no-index --find-links=your_offline_packages -r requirements.txt
+

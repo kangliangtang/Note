@@ -15,8 +15,8 @@ $ sudo docker exec -it 775c7c9ee1e1 /bin/bash
  docker logs -f 6c20f822c0a9
 
 # 容器日志
-kubectl get pod -n c7n-system | grep ui
-kubectl log -f ui-automate-websocket-77844686f6-6r7r9   -n c7n-system
+kubectl get pod -n steam-uat | grep automate
+kubectl log -f ui-automate-websocket-85d5c76fc5-vzjl9 -n steam-uat
 
 
 # 进入指定容器
@@ -43,10 +43,17 @@ operation-devops/APg4R4qpQEXk1SQCdBPYqCzCU97YkUE8W3iMf
 kubectl get pods   #查看所有正在运行的pod
 NAME                            READY     STATUS    RESTARTS   AGE
 nginx-56b8c64cb4-t97vb          1/1       Running   3          1d
-<2>
-➜  ~ kubectl exec -it nginx-56b8c64cb4-t97vb -- /bin/bash      #假如当前pod只有一个容器,运行以下命令即可
-root@nginx-56b8c64cb4-t97vb:/# ps -ef
-UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 14:45 ?        00:00:00 nginx: master process nginx -g daemon off;
-<3>假如一个pod里有多个容器,用--container or -c 参数。例如:假如这里有个Pod名为my-pod,这个Pod有两个容器,分别名为main-app 和 helper-app,下面的命令将打开到main-app的shell的容器里。
-kubectl exec -it my-pod --container main-app -- /bin/bash
+<2> kubectl exec -it nginx-56b8c64cb4-t97vb -- /bin/bash      #假如当前pod只有一个容器,运行以下命令即可
+
+<3>假如一个pod里有多个容器,用--container or -c 参数。
+	例如:
+		 假如这里有个Pod名为my-pod,这个Pod有两个容器,分别名为main-app 和 helper-app,
+		 下面的命令将打开到main-app的shell的容器里。
+		 kubectl exec -it my-pod --container main-app -- /bin/bash
+		 kubectl exec -it perf-automate-service-87d4d787c-4952b -n steam-uat --container perf-automate-service  -- /bin/bash
+
+# 网咯问题
+ 可进入容器内部， ping www.baidu.com
+ 
+
+
